@@ -34,6 +34,6 @@ public class EnderecoResponseDTO {
     private Integer numero;
 
     @Schema(description = "ID de Cliente")
-    private Cliente cliente;
+    private String cliente;
 
 }

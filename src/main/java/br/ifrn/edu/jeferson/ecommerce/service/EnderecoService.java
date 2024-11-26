@@ -12,6 +12,8 @@ import br.ifrn.edu.jeferson.ecommerce.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EnderecoService {
 
@@ -40,5 +42,10 @@ public class EnderecoService {
         enderecoRepository.save(endereco);
 
         return enderecoMapper.toResponseDTO(endereco);
+    }
+
+    public List<EnderecoResponseDTO> listar() {
+        List<Endereco> enderecos = enderecoRepository.findAll();
+        return enderecoMapper.toEnderecosDTOList(enderecos);
     }
 }

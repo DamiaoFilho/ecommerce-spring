@@ -5,6 +5,8 @@ import br.ifrn.edu.jeferson.ecommerce.domain.dtos.Endereco.EnderecoRequestDTO;
 import br.ifrn.edu.jeferson.ecommerce.domain.dtos.Endereco.EnderecoResponseDTO;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface EnderecoMapper {
 
@@ -12,5 +14,8 @@ public interface EnderecoMapper {
     @Mapping(target="cliente", ignore = true)
     Endereco toEntity(EnderecoRequestDTO enderecoDTO);
 
+    @Mapping(target = "cliente", source = "cliente.nome")
     EnderecoResponseDTO toResponseDTO(Endereco endereco);
+
+    List<EnderecoResponseDTO> toEnderecosDTOList(List<Endereco> enderecos);
 }
