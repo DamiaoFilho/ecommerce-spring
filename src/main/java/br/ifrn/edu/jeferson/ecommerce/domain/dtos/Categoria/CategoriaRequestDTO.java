@@ -1,4 +1,4 @@
-package br.ifrn.edu.jeferson.ecommerce.domain.dtos;
+package br.ifrn.edu.jeferson.ecommerce.domain.dtos.Categoria;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
