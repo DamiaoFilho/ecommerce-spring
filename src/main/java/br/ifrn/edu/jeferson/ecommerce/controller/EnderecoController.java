@@ -8,10 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +30,24 @@ public class EnderecoController {
     @GetMapping
     public ResponseEntity<List<EnderecoResponseDTO>> listar() {
         return ResponseEntity.ok(enderecoService.listar());
+    }
+
+    @Operation(summary = "Atualizar endereço")
+    @PutMapping("/{id}")
+    public ResponseEntity<EnderecoResponseDTO> atualizar(@PathVariable Long id, @RequestBody EnderecoRequestDTO enderecoRequestDTO) {
+        return ResponseEntity.ok(enderecoService.update(id, enderecoRequestDTO));
+    }
+
+    @Operation(summary = "Remover Endereco")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
+        enderecoService.remover(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Consultar Endereço")
+    @GetMapping("/{id}")
+    public ResponseEntity<EnderecoResponseDTO> consultar(@PathVariable Long id) {
+        return ResponseEntity.ok(enderecoService.buscarPorId(id));
     }
 }

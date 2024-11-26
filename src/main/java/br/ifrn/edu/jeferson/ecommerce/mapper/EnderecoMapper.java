@@ -18,4 +18,10 @@ public interface EnderecoMapper {
     EnderecoResponseDTO toResponseDTO(Endereco endereco);
 
     List<EnderecoResponseDTO> toEnderecosDTOList(List<Endereco> enderecos);
+
+    @BeanMapping(nullValuePropertyMappingStrategy =  NullValuePropertyMappingStrategy.IGNORE)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
+    void updateEntityFromDTO(EnderecoRequestDTO enderecoDTO, @MappingTarget Endereco endereco);
+
 }
